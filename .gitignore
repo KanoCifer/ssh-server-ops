@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+__pycache__/
+*.pyc
+.env
+.venv/
+.claude/
+.idea/
+.vscode/
+
+# 本地凭据（含真实 IP / 用户名 / 密码），禁止入库
+**/server-info.local.md
+~/.ssh/

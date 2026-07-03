@@ -6,20 +6,20 @@
 
 直接在 SSH 中执行 `bt` 进入交互式菜单，或 `bt <编号>` 单命令执行：
 
-| 编号 | 功能 | 编号 | 功能 |
-| --- | --- | --- | --- |
-| 1 | 重启面板 | 13 | 查看默认登录信息 |
-| 2 | 停止面板 | 14 | 清理系统垃圾 |
-| 3 | 启动面板 | 15 | 修复面板（更新/修复） |
-| 4 | 重载面板 | 16 | 设置日志切割压缩 |
-| 5 | 修改面板密码（交互式） | 17 | 设置面板自动备份 |
-| 6 | 修改面板用户名（交互式） | 18 | （保留） |
-| 7 | 修改 MySQL root 密码 | 19-21 | （保留） |
-| 8 | 修改面板端口（交互式） | 22 | 显示面板错误日志 |
-| 9 | 清除面板缓存 | 23 | 关闭 BasicAuth |
-| 10 | 清除登录限制 | 24 | 关闭动态口令 |
-| 11 | （保留） | 25 | 设置文件历史副本 |
-| 12 | 取消域名绑定限制 | | |
+| 编号 | 功能                     | 编号  | 功能                  |
+| ---- | ------------------------ | ----- | --------------------- |
+| 1    | 重启面板                 | 13    | 查看默认登录信息      |
+| 2    | 停止面板                 | 14    | 清理系统垃圾          |
+| 3    | 启动面板                 | 15    | 修复面板（更新/修复） |
+| 4    | 重载面板                 | 16    | 设置日志切割压缩      |
+| 5    | 修改面板密码（交互式）   | 17    | 设置面板自动备份      |
+| 6    | 修改面板用户名（交互式） | 18    | （保留）              |
+| 7    | 修改 MySQL root 密码     | 19-21 | （保留）              |
+| 8    | 修改面板端口（交互式）   | 22    | 显示面板错误日志      |
+| 9    | 清除面板缓存             | 23    | 关闭 BasicAuth        |
+| 10   | 清除登录限制             | 24    | 关闭动态口令          |
+| 11   | （保留）                 | 25    | 设置文件历史副本      |
+| 12   | 取消域名绑定限制         |       |                       |
 
 ## 面板自身管理
 
@@ -82,25 +82,25 @@ cat /tmp/panelExec.log
 
 ## 关键路径速查
 
-| 用途 | 路径 |
-| --- | --- |
-| 站点根目录 | `/www/wwwroot/` |
-| Nginx vhost | `/www/server/panel/vhost/nginx/` |
-| Nginx 主配置 | `/www/server/nginx/conf/nginx.conf` |
-| Nginx 安装目录 | `/www/server/nginx/` |
-| Apache vhost | `/www/server/panel/vhost/apache/` |
-| Apache 安装目录 | `/www/server/httpd/` |
-| MySQL 数据 | `/www/server/data/` |
-| phpMyAdmin | `/www/server/phpmyadmin/` |
-| PostgreSQL 数据 | `/www/server/pgsql/data/` |
-| PHP 安装目录 | `/www/server/php/` |
-| Redis 配置 | `/www/server/redis/redis.conf` |
-| 数据库备份 | `/www/backup/database/` |
-| 站点备份 | `/www/backup/site/` |
-| 网站访问日志 | `/www/wwwlogs/` |
-| MySQL 错误日志 | `/www/server/data/*.err` |
-| 面板日志 | `/tmp/panelBoot.pl` |
-| SSL 证书（面板面板内置） | `/www/server/panel/ssl/` |
+| 用途                     | 路径                                |
+| ------------------------ | ----------------------------------- |
+| 站点根目录               | `/www/wwwroot/`                     |
+| Nginx vhost              | `/www/server/panel/vhost/nginx/`    |
+| Nginx 主配置             | `/www/server/nginx/conf/nginx.conf` |
+| Nginx 安装目录           | `/www/server/nginx/`                |
+| Apache vhost             | `/www/server/panel/vhost/apache/`   |
+| Apache 安装目录          | `/www/server/httpd/`                |
+| MySQL 数据               | `/www/server/data/`                 |
+| phpMyAdmin               | `/www/server/phpmyadmin/`           |
+| PostgreSQL 数据          | `/www/server/pgsql/data/`           |
+| PHP 安装目录             | `/www/server/php/`                  |
+| Redis 配置               | `/www/server/redis/redis.conf`      |
+| 数据库备份               | `/www/backup/database/`             |
+| 站点备份                 | `/www/backup/site/`                 |
+| 网站访问日志             | `/www/wwwlogs/`                     |
+| MySQL 错误日志           | `/www/server/data/*.err`            |
+| 面板日志                 | `/tmp/panelBoot.pl`                 |
+| SSL 证书（面板面板内置） | `/www/server/panel/ssl/`            |
 
 ## 站点/域名相关
 

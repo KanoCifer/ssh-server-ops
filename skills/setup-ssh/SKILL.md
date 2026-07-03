@@ -14,6 +14,8 @@ disable-model-invocation: true
 
 ### 1. 收集非敏感连接信息
 
+先检查 `server-info.local.md` 是否存在。如果存在，读取并展示现有值，问用户要修改哪些项（增量编辑）；如果不存在，按下列清单收集全部项。
+
 按下列清单向用户询问（只收不写入文件/不入库的项）：
 
 ```
@@ -47,16 +49,16 @@ disable-model-invocation: true
 
 生成 `skills/ssh-server-ops/references/server-info.local.md`。**文件中不含 IP / sudo 密码**：
 
-````markdown
+```markdown
 # Server Connection Info (local — gitignored — 无 IP / 无密码)
 
-| 项目      | 值                                    |
-| --------- | ------------------------------------- |
-| 用户      | <用户>                                |
-| 密钥      | <密钥>                                |
-| 端口      | <端口>                                |
-| IP        | 环境变量 $SERVER_IP（不出现在本文件） |
-| sudo      | 环境变量 $SUDO_SSH_PASSWORD（不出现在本文件） |
+| 项目 | 值                                            |
+| ---- | --------------------------------------------- |
+| 用户 | <用户>                                        |
+| 密钥 | <密钥>                                        |
+| 端口 | <端口>                                        |
+| IP   | 环境变量 $SERVER_IP（不出现在本文件）         |
+| sudo | 环境变量 $SUDO_SSH_PASSWORD（不出现在本文件） |
 
 ## 服务器环境
 
@@ -67,7 +69,7 @@ disable-model-invocation: true
 ## 备注
 
 <用户补充的额外信息>
-````
+```
 
 完成标准：文件落盘 + 确认路径。
 
@@ -84,6 +86,7 @@ export SERVER_SSH_PORT='22'             # 非默认时设置
 ```
 
 说明：
+
 - 这些变量不在仓库、不在大模型上下文
 - 切换服务器时覆盖 export 即可（如 `export SERVER_IP='other.host'`）
 
@@ -107,9 +110,25 @@ ssh -i "$SERVER_SSH_KEY" [-p "$SERVER_SSH_PORT"] "$SERVER_USER"@"$SERVER_IP" \
 ```
 
 - 成功 → 打印连接摘要
-- 失败 → 提示检查：密钥 chmod 600 / 安全组 / IP / 用户名
+- 失败 → 按故障树提示用户：
+  - `Connection timed out` → 检查安全组、IP 是否正确
+  - `Permission denied` → 检查密钥 `chmod 600`、用户名是否正确
+  - `Connection refused` → 检查 SSH 端口、IP 是否正确
 
 完成标准：拿到 `echo ok`。
+
+### 6. 配置完成总结
+
+连接成功后，打印摘要：
+
+```
+✅ 连接就绪
+  用户: $SERVER_USER
+  主机: $SERVER_IP (port $SERVER_SSH_PORT)
+  环境: <管理面板> / <服务管理> / <Web 服务器>
+  
+切换服务器时覆盖对应 export 即可。
+```
 
 ## 安全规则
 

@@ -9,16 +9,16 @@
 
 ```bash
 # 由 $SERVER_USER / $SERVER_IP / $SERVER_SSH_KEY / $SERVER_SSH_PORT 拼出
-ssh -i ${$SERVER_SSH_KEY} [-p ${$SERVER_SSH_PORT}] ${$SERVER_USER}@${$SERVER_IP}
+ssh -i $SERVER_SSH_KEY [-p $SERVER_SSH_PORT] $SERVER_USER@$SERVER_IP
 ```
 
-| 项目      | 来源                                       |
-| --------- | ------------------------------------------ |
-| 用户      | 环境变量 `$SERVER_USER`                    |
-| 主机      | 环境变量 `$SERVER_IP`                      |
-| 密钥      | 环境变量 `$SERVER_SSH_KEY`                 |
-| 端口      | 环境变量 `$SERVER_SSH_PORT`（默认 22）     |
-| sudo 密码 | 环境变量 `$SUDO_SSH_PASSWORD`              |
+| 项目      | 来源                                   |
+| --------- | -------------------------------------- |
+| 用户      | 环境变量 `$SERVER_USER`                |
+| 主机      | 环境变量 `$SERVER_IP`                  |
+| 密钥      | 环境变量 `$SERVER_SSH_KEY`             |
+| 端口      | 环境变量 `$SERVER_SSH_PORT`（默认 22） |
+| sudo 密码 | 环境变量 `$SUDO_SSH_PASSWORD`          |
 
 ## 服务器环境
 

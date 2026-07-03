@@ -1,13 +1,15 @@
 # ssh-server-ops
 
-Claude Code 技能集合，通过 SSH 连接远程服务器执行运维操作。凭据全部走环境变量，仓库中不含任何 IP / 密码。
+通过 SSH 连接远程服务器执行运维操作。凭据全部走环境变量，不含任何明文 IP / 密码。
+
+[English](README.en.md)
 
 ## 技能列表
 
-| 技能 | 用途 | 触发 |
-| --- | --- | --- |
-| `ssh-server-ops` | 在远程服务器执行运维操作（状态 / 日志 / 重启 / 容器 / nginx / 数据库） | 用户说"服务器/运维/重启/日志/容器/…" |
-| `setup-ssh` | 初始化 / 更新 SSH 连接信息，引导配置环境变量 | 用户说"配置连接/添加服务器/初始化 ssh" |
+| 技能             | 用途                                                                   | 触发                                   |
+| ---------------- | ---------------------------------------------------------------------- | -------------------------------------- |
+| `ssh-server-ops` | 在远程服务器执行运维操作（状态 / 日志 / 重启 / 容器 / nginx / 数据库） | 用户说"服务器/运维/重启/日志/容器/…"   |
+| `setup-ssh`      | 初始化 / 更新 SSH 连接信息，引导配置环境变量                           | 用户说"配置连接/添加服务器/初始化 ssh" |
 
 ## 安装
 
@@ -26,13 +28,14 @@ cp -r skills/ssh-server-ops .claude/skills/
 cp -r skills/setup-ssh .claude/skills/
 ```
 
-### 通过 Claude Code Plugin 安装
+### Claude Code
 
 ```bash
 # 添加市场
 claude plugins marketplace add KanoCifer/ssh-server-ops
 
 # 安装插件
+claude plugins install ssh-server-ops@setup-ssh
 claude plugins install ssh-server-ops@ssh-server-ops
 ```
 
@@ -40,6 +43,7 @@ claude plugins install ssh-server-ops@ssh-server-ops
 
 ```
 /plugin marketplace add KanoCifer/ssh-server-ops
+/plugins install ssh-server-ops@setup-ssh
 /plugin install ssh-server-ops@ssh-server-ops
 ```
 
@@ -53,6 +57,8 @@ npx skills add KanoCifer/ssh-server-ops
 ```
 
 ## 配置
+
+执行 `/setup-ssh`初始化服务器连接
 
 真实凭据通过环境变量提供，在 `~/.zshrc`（或 `~/.bash_profile`）中设置：
 

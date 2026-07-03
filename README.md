@@ -28,33 +28,29 @@ cp -r skills/setup-ssh .claude/skills/
 
 ### 通过 Claude Code Plugin 安装
 
-本仓库可发布为 Claude Code Plugin，用户在 `settings.json` 中声明后自动安装：
+```bash
+# 添加市场
+claude plugins marketplace add KanoCifer/ssh-server-ops
 
-```jsonc
-// ~/.claude/settings.json 或项目 .claude/settings.json
-{
-  "plugins": [
-    {
-      "name": "ssh-server-ops",
-      "source": "github:KanoCifer/ssh-server-ops",
-      "skills": ["skills/ssh-server-ops", "skills/setup-ssh"]
-    }
-  ]
-}
+# 安装插件
+claude plugins install ssh-server-ops@ssh-server-ops
 ```
 
-Claude Code 启动时会自动拉取仓库并将 skills 目录链接到本地。
+或在 Claude 对话框 `/plugin` 中交互完成：
 
-### 通过 npx 一次性运行（无需持久安装）
+```
+/plugin marketplace add KanoCifer/ssh-server-ops
+/plugin install ssh-server-ops@ssh-server-ops
+```
 
-只想临时试用的，可直接通过 npx 调用——npx 会自动下载仓库技能到临时路径：
+### 通过 npx skills 安装（跨 Agent）
+
+支持 70+ 编码 Agent（Claude Code、Codex、Cursor 等）：
 
 ```bash
-# 告诉 Claude Code 使用临时技能
-npx -y @anthropic-ai/claude-code skills install github:KanoCifer/ssh-server-ops
+# 交互式安装
+npx skills add KanoCifer/ssh-server-ops
 ```
-
-或在 prompt 中直接让 Claude 使用仓库里的技能处理当前任务。
 
 ## 配置
 

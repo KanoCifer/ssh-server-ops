@@ -1,0 +1,39 @@
+{
+  "name": "ssh-server-ops",
+  "owner": {
+    "name": "Kuroome",
+    "url": "https://github.com/KanoCifer"
+  },
+  "metadata": {
+    "description": "SSH Server Operations",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "setup-ssh",
+      "source": "./skills/setup-ssh",
+      "description": "引导用户配置 SSH 连接信息",
+      "version": "1.0.0",
+      "author": {
+        "name": "Kuroome"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/KanoCifer/ssh-server-ops",
+      "category": "ssh",
+      "tags": ["ssh", "server", "operations"]
+    },
+    {
+      "name": "ssh-server-ops",
+      "source": "./skills/ssh-server-ops",
+      "description": "SSH Server Operations",
+      "version": "1.0.0",
+      "author": {
+        "name": "Kuroome"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/KanoCifer/ssh-server-ops",
+      "category": "ssh",
+      "tags": ["ssh", "server", "operations"]
+    }
+  ]
+}

@@ -11,10 +11,12 @@ Claude Code 技能集合，通过 SSH 连接远程服务器执行运维操作。
 
 ## 安装
 
+### 手动安装
+
 把技能目录复制到 Claude Code 的技能路径：
 
 ```bash
-# 作为 user-level 技能
+# 作为 user-level 技能（全局可用）
 cp -r skills/ssh-server-ops ~/.claude/skills/
 cp -r skills/setup-ssh ~/.claude/skills/
 
@@ -23,6 +25,36 @@ mkdir -p .claude/skills
 cp -r skills/ssh-server-ops .claude/skills/
 cp -r skills/setup-ssh .claude/skills/
 ```
+
+### 通过 Claude Code Plugin 安装
+
+本仓库可发布为 Claude Code Plugin，用户在 `settings.json` 中声明后自动安装：
+
+```jsonc
+// ~/.claude/settings.json 或项目 .claude/settings.json
+{
+  "plugins": [
+    {
+      "name": "ssh-server-ops",
+      "source": "github:KanoCifer/ssh-server-ops",
+      "skills": ["skills/ssh-server-ops", "skills/setup-ssh"]
+    }
+  ]
+}
+```
+
+Claude Code 启动时会自动拉取仓库并将 skills 目录链接到本地。
+
+### 通过 npx 一次性运行（无需持久安装）
+
+只想临时试用的，可直接通过 npx 调用——npx 会自动下载仓库技能到临时路径：
+
+```bash
+# 告诉 Claude Code 使用临时技能
+npx -y @anthropic-ai/claude-code skills install github:KanoCifer/ssh-server-ops
+```
+
+或在 prompt 中直接让 Claude 使用仓库里的技能处理当前任务。
 
 ## 配置
 

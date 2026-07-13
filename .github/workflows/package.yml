@@ -1,0 +1,40 @@
+name: Package Skills
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create skills archive
+        run: |
+          VERSION="${{ github.event.release.tag_name || 'dev' }}"
+          ARCHIVE="ssh-server-ops-skills-${VERSION}.zip"
+
+          # 打包 skills 目录 + plugin 定义文件，排除 gitignore 的本地凭据
+          zip -r "${ARCHIVE}" \
+            skills/ \
+            -x "skills/**/server-info.local.md"
+
+          echo "ARCHIVE=${ARCHIVE}" >> $GITHUB_ENV
+          echo "Created ${ARCHIVE}"
+
+      - name: Upload to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ARCHIVE }}
+
+      - name: Upload artifact (manual trigger)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssh-server-ops-skills
+          path: ${{ env.ARCHIVE }}
+          retention-days: 30

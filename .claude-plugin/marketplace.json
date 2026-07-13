@@ -5,35 +5,23 @@
     "url": "https://github.com/KanoCifer"
   },
   "metadata": {
-    "description": "SSH Server Operations",
-    "version": "1.1.0"
+    "description": "SSH 远程服务器运维操作 + 连接初始化",
+    "version": "1.3.0"
   },
   "plugins": [
     {
-      "name": "setup-ssh",
-      "source": "./skills/setup-ssh",
-      "description": "引导用户配置 SSH 连接信息",
-      "version": "1.1.0",
-      "author": {
-        "name": "Kuroome"
-      },
-      "license": "MIT",
-      "homepage": "https://github.com/KanoCifer/ssh-server-ops",
-      "category": "ssh",
-      "tags": ["ssh", "server", "operations"]
-    },
-    {
       "name": "ssh-server-ops",
-      "source": "./skills/ssh-server-ops",
-      "description": "SSH Server Operations",
-      "version": "1.1.0",
+      "source": "./",
+      "description": "SSH 远程服务器运维操作 + 连接初始化。包含 2 个技能：setup-ssh（初始化/更新 SSH 连接信息）、ssh-server-ops（在远程服务器执行运维操作 — 状态/日志/重启/容器/nginx/数据库）。",
+      "version": "1.3.0",
       "author": {
         "name": "Kuroome"
       },
       "license": "MIT",
       "homepage": "https://github.com/KanoCifer/ssh-server-ops",
       "category": "ssh",
-      "tags": ["ssh", "server", "operations"]
+      "tags": ["ssh", "server", "operations", "ops", "devops", "宝塔"],
+      "skills": ["./skills/setup-ssh", "./skills/ssh-server-ops"]
     }
   ]
 }

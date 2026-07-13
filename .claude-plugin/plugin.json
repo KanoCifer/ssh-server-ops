@@ -1,0 +1,14 @@
+{
+  "name": "ssh-server-ops",
+  "version": "1.3.0",
+  "description": "SSH 远程服务器运维操作 + 连接初始化。凭据全部走环境变量，不含任何明文 IP / 密码。",
+  "author": {
+    "name": "Kuroome",
+    "url": "https://github.com/KanoCifer"
+  },
+  "homepage": "https://github.com/KanoCifer/ssh-server-ops",
+  "repository": "https://github.com/KanoCifer/ssh-server-ops",
+  "license": "MIT",
+  "keywords": ["ssh", "server", "operations", "ops", "devops", "宝塔"],
+  "skills": ["./skills/setup-ssh", "./skills/ssh-server-ops"]
+}

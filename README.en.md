@@ -11,7 +11,34 @@ Perform remote server operations via SSH. All credentials are managed through en
 
 ## Installation
 
-### Manual
+### Claude Code Plugin (recommended)
+
+Single plugin containing both `setup-ssh` + `ssh-server-ops` skills — one install covers everything:
+
+```bash
+# Add the marketplace
+claude plugins marketplace add KanoCifer/ssh-server-ops
+
+# Install plugin
+claude plugins install ssh-server-ops
+```
+
+Both skills become available automatically after install — no extra configuration needed.
+
+Or use `/plugin` interactively in the Claude prompt:
+
+```
+/plugin marketplace add KanoCifer/ssh-server-ops
+/plugin install ssh-server-ops
+```
+
+Local dev load:
+
+```bash
+claude --plugin-dir /path/to/ssh-server-ops
+```
+
+### Manual (without plugin)
 
 Copy the skill directories into Claude Code's skills path:
 
@@ -26,31 +53,11 @@ cp -r skills/ssh-server-ops .claude/skills/
 cp -r skills/setup-ssh .claude/skills/
 ```
 
-### Claude Code Plugin
-
-```bash
-# Add the marketplace
-claude plugins marketplace add KanoCifer/ssh-server-ops
-
-# Install plugins
-claude plugins install ssh-server-ops@setup-ssh
-claude plugins install ssh-server-ops@ssh-server-ops
-```
-
-Or use `/plugin` interactively in the Claude prompt:
-
-```
-/plugin marketplace add KanoCifer/ssh-server-ops
-/plugin install ssh-server-ops@setup-ssh
-/plugin install ssh-server-ops@ssh-server-ops
-```
-
 ### Cross-Agent via npx skills
 
 Works with 70+ coding agents (Claude Code, Codex, Cursor, etc.):
 
 ```bash
-# Interactive install
 npx skills add KanoCifer/ssh-server-ops
 ```
 
@@ -103,6 +110,9 @@ ssh-server-ops skill
 
 ```
 .
+├── .claude-plugin/
+│   ├── plugin.json         # single plugin definition (skills array)
+│   └── marketplace.json    # marketplace publish config
 ├── LICENSE
 ├── CLAUDE.md              # project-internal dev conventions
 ├── README.md

@@ -13,7 +13,34 @@
 
 ## 安装
 
-### 手动安装
+### Claude Code Plugin（推荐）
+
+单 plugin 包含 `setup-ssh` + `ssh-server-ops` 两个技能，一次安装即可：
+
+```bash
+# 添加市场
+claude plugins marketplace add KanoCifer/ssh-server-ops
+
+# 安装插件
+claude plugins install ssh-server-ops
+```
+
+安装后两个技能均自动可用，无需额外配置。
+
+或在 Claude 对话框中交互完成：
+
+```
+/plugin marketplace add KanoCifer/ssh-server-ops
+/plugin install ssh-server-ops
+```
+
+本地开发加载：
+
+```bash
+claude --plugin-dir /path/to/ssh-server-ops
+```
+
+### 手动安装（不用 plugin）
 
 把技能目录复制到 Claude Code 的技能路径：
 
@@ -28,31 +55,11 @@ cp -r skills/ssh-server-ops .claude/skills/
 cp -r skills/setup-ssh .claude/skills/
 ```
 
-### Claude Code
-
-```bash
-# 添加市场
-claude plugins marketplace add KanoCifer/ssh-server-ops
-
-# 安装插件
-claude plugins install ssh-server-ops@setup-ssh
-claude plugins install ssh-server-ops@ssh-server-ops
-```
-
-或在 Claude 对话框 `/plugin` 中交互完成：
-
-```
-/plugin marketplace add KanoCifer/ssh-server-ops
-/plugins install ssh-server-ops@setup-ssh
-/plugin install ssh-server-ops@ssh-server-ops
-```
-
 ### 通过 npx skills 安装（跨 Agent）
 
 支持 70+ 编码 Agent（Claude Code、Codex、Cursor 等）：
 
 ```bash
-# 交互式安装
 npx skills add KanoCifer/ssh-server-ops
 ```
 
@@ -105,6 +112,9 @@ ssh-server-ops 技能
 
 ```
 .
+├── .claude-plugin/
+│   ├── plugin.json         # 单 plugin 定义（含 skills 数组）
+│   └── marketplace.json    # 市场发布配置
 ├── LICENSE
 ├── CLAUDE.md              # 项目内部开发规范
 ├── README.md

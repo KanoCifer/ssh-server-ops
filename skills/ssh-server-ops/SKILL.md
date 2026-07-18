@@ -1,27 +1,24 @@
 ---
 name: ssh-server-ops
 description: |
-  SSH 连接远程服务器执行运维操作。当用户提到服务器、运维、重启服务、查看日志、
-  检查状态、操作容器、修改 nginx 配置、数据库查询、部署、宝塔面板、防火墙、
-  备份、磁盘空间、SSL 证书、进程管理、文件操作、服务监控、系统更新、
-  查看网络端口时使用此技能。即使没有明确说"SSH"，只要涉及对远程服务器的
-  任何操作都应触发，包括"帮我看下服务器"、"服务器上…"、"部署一下"等。
+  SSH 连接远程服务器执行运维操作。
+disable-model-invocation: true
 ---
 
 # SSH Server Ops
 
-> server-info.md     — 连接信息模板（运行时真实值由环境变量提供）
-> bt-panel.md        — 宝塔 `bt` 工具箱 + 服务管理 + 站点排查速查
+> server-info.md — 连接信息模板（运行时真实值由环境变量提供）
+> bt-panel.md — 宝塔 `bt` 工具箱 + 服务管理 + 站点排查速查
 
 ### 环境变量（全部不在仓库中保存）
 
-| 变量 | 用途 | 必需 |
-| --- | --- | --- |
-| `$SERVER_IP` | 服务器 IP 或域名 | ✅ |
-| `$SERVER_USER` | SSH 用户名 | ✅ |
-| `$SERVER_SSH_KEY` | SSH 密钥路径（默认 `~/.ssh/id_ed25519`） | ✅ |
-| `$SERVER_SSH_PORT` | SSH 端口（默认 `22`） | 否 |
-| `$SUDO_SSH_PASSWORD` | sudo 密码 | ✅（如需 root） |
+| 变量                 | 用途                                     | 必需            |
+| -------------------- | ---------------------------------------- | --------------- |
+| `$SERVER_IP`         | 服务器 IP 或域名                         | ✅              |
+| `$SERVER_USER`       | SSH 用户名                               | ✅              |
+| `$SERVER_SSH_KEY`    | SSH 密钥路径（默认 `~/.ssh/id_ed25519`） | ✅              |
+| `$SERVER_SSH_PORT`   | SSH 端口（默认 `22`）                    | 否              |
+| `$SUDO_SSH_PASSWORD` | sudo 密码                                | ✅（如需 root） |
 
 以下 `$SSH` 由环境变量拼出：`ssh -i "$SERVER_SSH_KEY" [-p "$SERVER_SSH_PORT"] "$SERVER_USER"@"$SERVER_IP"`；需要 root 时加 `echo "$SUDO_SSH_PASSWORD" | sudo -S` 前缀。
 
